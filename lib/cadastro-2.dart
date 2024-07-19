@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
+class Cadastro2 extends StatefulWidget {
+  const Cadastro2({super.key});
 
-class Cadastro2 extends StatelessWidget {
-  const Cadastro2 ({super.key});
+  @override
+  State<Cadastro2> createState() => _Cadastro2State();
+}
 
+class _Cadastro2State extends State<Cadastro2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,6 +72,10 @@ class Cadastro2 extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 child: ElevatedButton(
                   onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.all(10),
+                    backgroundColor: const Color.fromARGB(255, 19, 16, 175),
+                  ),
                   child: const Text(
                     "Finalizar",
                     style: TextStyle(
@@ -75,10 +83,6 @@ class Cadastro2 extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                       color: Colors.white,
                     ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.all(10),
-                    backgroundColor: const Color.fromARGB(255, 19, 16, 175),
                   ),
                 ),
               ),
@@ -89,6 +93,3 @@ class Cadastro2 extends StatelessWidget {
     );
   }
 }
-
-
-/* */

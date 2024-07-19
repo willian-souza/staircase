@@ -2,8 +2,21 @@ import 'package:flutter/material.dart';
 import 'cadastro-1.dart';
 import 'esqueceu-senha.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   const Login({super.key});
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  var _hidePassword;
+
+  @override
+  void initState() {
+    super.initState();
+    _hidePassword = true;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +58,7 @@ class Login extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 50),
                   child: TextField(
+                    keyboardType: TextInputType.emailAddress,
                     style: const TextStyle(
                         fontSize: 20, fontWeight: FontWeight.w600, height: 1),
                     decoration: InputDecoration(
@@ -57,27 +71,41 @@ class Login extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 5),
                   child: TextField(
-                    obscureText: true,
+                    obscureText: _hidePassword,
                     style: const TextStyle(
                         fontSize: 20, fontWeight: FontWeight.w600, height: 1),
                     decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(50)),
-                        hintText: "Senha",
-                        suffixIcon: const Icon(Icons.visibility)),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(50)),
+                      hintText: "Senha",
+                      suffixIcon: IconButton(
+                        padding: const EdgeInsetsDirectional.only(end: 12.0),
+                        icon: Icon(
+                          _hidePassword
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          color: const Color.fromARGB(255, 19, 16, 175),
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _hidePassword = !_hidePassword;
+                          });
+                        },
+                      ),
+                    ),
                   ),
                 ),
                 GestureDetector(
-                  onTap: () => Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => EsqueceuSenha())),
-                    child: Text(
-                      "Esqueceu a senha",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        color: Color.fromARGB(255, 19, 16, 175),
-                      ),
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const EsqueceuSenha())),
+                  child: const Text(
+                    "Esqueceu a senha",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                      color: Color.fromARGB(255, 19, 16, 175),
                     ),
+                  ),
                 )
               ],
             ),
@@ -87,6 +115,10 @@ class Login extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 child: ElevatedButton(
                   onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.all(10),
+                    backgroundColor: const Color.fromARGB(255, 19, 16, 175),
+                  ),
                   child: const Text(
                     "Entrar",
                     style: TextStyle(
@@ -94,10 +126,6 @@ class Login extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                       color: Colors.white,
                     ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.all(10),
-                    backgroundColor: const Color.fromARGB(255, 19, 16, 175),
                   ),
                 ),
               ),
@@ -108,9 +136,13 @@ class Login extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => Cadastro1()));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const Cadastro1()));
                   },
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.all(10),
+                    shadowColor: Colors.transparent,
+                  ),
                   child: const Text(
                     "Criar conta",
                     style: TextStyle(
@@ -118,10 +150,6 @@ class Login extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                       color: Color.fromARGB(255, 19, 16, 175),
                     ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.all(10),
-                    shadowColor: Colors.transparent,
                   ),
                 ),
               ),
@@ -132,6 +160,5 @@ class Login extends StatelessWidget {
     );
   }
 }
-
 
 /* */

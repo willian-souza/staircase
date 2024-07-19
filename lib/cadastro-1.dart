@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'login.dart';
 import 'cadastro-2.dart';
 
-class Cadastro1 extends StatelessWidget {
+class Cadastro1 extends StatefulWidget {
   const Cadastro1({super.key});
 
+  @override
+  State<Cadastro1> createState() => _Cadastro1State();
+}
+
+class _Cadastro1State extends State<Cadastro1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,9 +75,13 @@ class Cadastro1 extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => Cadastro2()));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const Cadastro2()));
                   },
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.all(10),
+                    backgroundColor: const Color.fromARGB(255, 19, 16, 175),
+                  ),
                   child: const Text(
                     "Continuar",
                     style: TextStyle(
@@ -80,10 +89,6 @@ class Cadastro1 extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                       color: Colors.white,
                     ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.all(10),
-                    backgroundColor: const Color.fromARGB(255, 19, 16, 175),
                   ),
                 ),
               ),
@@ -95,8 +100,12 @@ class Cadastro1 extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => Login()));
+                        MaterialPageRoute(builder: (context) => const Login()));
                   },
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.all(10),
+                    shadowColor: Colors.transparent,
+                  ),
                   child: const Text(
                     "Fazer Login",
                     style: TextStyle(
@@ -104,10 +113,6 @@ class Cadastro1 extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                       color: Color.fromARGB(255, 19, 16, 175),
                     ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.all(10),
-                    shadowColor: Colors.transparent,
                   ),
                 ),
               ),

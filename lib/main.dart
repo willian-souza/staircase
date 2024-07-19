@@ -3,6 +3,8 @@ import 'login.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: Login(),
+    home: const Login(),
+    debugShowCheckedModeBanner: false,
+    theme: ThemeData(primarySwatch: Colors.blue),
   ));
 }
